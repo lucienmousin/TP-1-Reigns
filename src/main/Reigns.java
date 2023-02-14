@@ -20,6 +20,8 @@ public class Reigns {
      */
     private static ArrayList<Question> questions;
 
+    private static int nbTours = 0;
+
     /**
      * La méthode main lance le jeu Reigns. Il initialise les questions, le personnage,
      * affiche les jauges du personnage et lance une boucle de jeu qui se termine lorsque le personnage perd.
@@ -29,35 +31,11 @@ public class Reigns {
      */
     public static void main(String[] args){
 
-        // début du jeu
-        System.out.println("Bienvenue sur Reigns");
-
-        initBanqueQuestions();
-
-        System.out.println("Création du personnage...");
-
-        initPersonnage();
-
-        System.out.println(personnage.getGenre().longRegne()
-                +" "+personnage.getNom());
-
-        personnage.AfficheJauges();
-
-        // tirage des questions
-        int nbTours = 0;
+        initPartie();
         while(!personnage.finDuJeu()){
-            nbTours++;
-            Question question = getQuestionAleatoire();
-            reponseQuestion(question);
-            personnage.AfficheJauges();
+            TourDeJeu();
         }
-
-        // fin du jeu
-        System.out.println(
-                personnage.getNom()
-                        + " a perdu ! Son règne a duré "
-                        +nbTours
-                        + " tours");
+        GameOver();
 
     }
 
@@ -85,12 +63,40 @@ public class Reigns {
         }
     }
 
+    private static void initPartie(){
+        int nbTours = 0;
+        System.out.println("Bienvenue sur Reigns");
+
+        initBanqueQuestions();
+        initPersonnage();
+
+        System.out.println(personnage.getGenre().longRegne()
+                +" "+personnage.getNom());
+        personnage.AfficheJauges();
+    }
+
+    private static void GameOver(){
+        System.out.println(
+                personnage.getNom()
+                        + " a perdu ! Son règne a duré "
+                        +nbTours
+                        + " tours");
+    }
+
+    private static void TourDeJeu(){
+        nbTours++;
+        reponseQuestion(getQuestionAleatoire());
+        personnage.AfficheJauges();
+    }
+
     /**
      * Cette fonction permet d'initialiser le personnage joué. Elle demande à l'utilisateur de saisir le nom du personnage
      * et le genre (Roi ou Reine). Elle crée ensuite le personnage.
      */
 
     private static void initPersonnage(){
+        System.out.println("Création du personnage...");
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrez le nom du personnage: ");
         System.out.flush();
@@ -98,6 +104,7 @@ public class Reigns {
         System.out.println(
                 "Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
         int genre = scanner.nextInt();
+        
         Genre roiReine;
         if(genre==1){
             roiReine = Genre.ROI;
