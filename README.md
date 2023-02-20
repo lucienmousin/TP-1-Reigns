@@ -1,6 +1,7 @@
 # Reigns
 
-Dans ce dépôt, vous trouverez une (mauvaise) implémentation du jeu REIGNS. 
+Dans ce dépôt, vous trouverez une (mauvaise) implémentation du jeu REIGNS.
+De la part de Alexandre **Tournel** et Thomas **Siest**.
 
 ## Qu'est-ce que Reigns ?
 
