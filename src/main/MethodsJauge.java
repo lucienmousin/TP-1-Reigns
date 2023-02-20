@@ -13,7 +13,12 @@ public class MethodsJauge extends Personnage{
         super(nom, genre);
     }
 
-
+    /**
+     * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
+     * et des "_" pour représenter la valeur manquante.
+     *
+     * @param jauge La jauge à afficher
+     */
 
     public static void afficheJauge(Jauge jauge) {
         String resultat = "[";
