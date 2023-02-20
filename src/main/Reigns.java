@@ -3,34 +3,16 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * La classe Reigns représente le programme principal du jeu Reigns
- *
- * @author Julie Jacques / Lucien Mousin
- * @version 1.0
- */
 public class Reigns {
-    /**
-     * le personnage joué
-     */
+
     private static Personnage personnage;
 
-    /**
-     * la banque de questions
-     */
     private static ArrayList<Question> questions;
 
     private static int nbTours = 0;
 
     public static boolean Fin = false;
 
-    /**
-     * La méthode main lance le jeu Reigns. Il initialise les questions, le personnage,
-     * affiche les jauges du personnage et lance une boucle de jeu qui se termine lorsque le personnage perd.
-     * Il affiche également le nombre de tours de jeu que le personnage a joué.
-     *
-     * @param args les arguments de la ligne de commande
-     */
     public static void main(String[] args){
 
         initPartie();
@@ -41,12 +23,6 @@ public class Reigns {
 
     }
 
-    /**
-     * Cette fonction permet de gérer la réponse à une question donnée. Elle affiche la question, demande à
-     * l'utilisateur d'entrer une réponse (soit "G" soit "D") et en fonction de la réponse, elle appelle la méthode
-     * appropriée pour appliquer les conséquences sur les jauges du personnage.
-     * @param question La question à laquelle il faut répondre
-     */
     private static void reponseQuestion(Question question){
         question.afficheQuestion();
         // récupère la réponse
@@ -92,11 +68,6 @@ public class Reigns {
         personnage.AfficheJauges();
     }
 
-    /**
-     * Cette fonction permet d'initialiser le personnage joué. Elle demande à l'utilisateur de saisir le nom du personnage
-     * et le genre (Roi ou Reine). Elle crée ensuite le personnage.
-     */
-
     private static void initPersonnage(){
         System.out.println("Création du personnage...");
 
@@ -118,9 +89,6 @@ public class Reigns {
         Reigns.personnage = new Personnage(nom,roiReine);
     }
 
-    /**
-     * Cette fonction initialise la banque de questions. Elle crée les questions et les ajoute à la banque.
-     */
     private static void initBanqueQuestions(){
         questions = new ArrayList<>();
         Question question1 = new Question(
@@ -172,10 +140,6 @@ public class Reigns {
         questions.add(question5);
     }
 
-    /**
-     * Cette fonction permet de tirer une question aléatoire dans la banque de questions.
-     * @return Une question aléatoire
-     */
     private static Question getQuestionAleatoire(){
         int numQuestion = (int) (Math.random()*questions.size());
         return questions.get(numQuestion);
