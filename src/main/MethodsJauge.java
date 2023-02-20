@@ -46,8 +46,6 @@ public class MethodsJauge extends Personnage{
 
 
 
-
-
     /**
      * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
      *

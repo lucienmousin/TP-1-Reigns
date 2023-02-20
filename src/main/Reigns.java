@@ -38,8 +38,8 @@ public class Reigns {
 
         initPersonnage();
 
-        System.out.println(personnage.getGenre().longRegne()
-                +" "+personnage.getNom());
+        System.out.println(MethodsPersonnage.getGenre().longRegne()
+                +" "+MethodsPersonnage.getNom());
 
         MethodsJauge.AfficheJauges();
 
@@ -54,7 +54,7 @@ public class Reigns {
 
         // fin du jeu
         System.out.println(
-                personnage.getNom()
+                MethodsPersonnage.getNom()
                         + " a perdu ! Son règne a duré "
                         +nbTours
                         + " tours");
