@@ -41,15 +41,15 @@ public class Reigns {
         System.out.println(personnage.getGenre().longRegne()
                 +" "+personnage.getNom());
 
-        personnage.AfficheJauges();
+        MethodsJauge.AfficheJauges();
 
         // tirage des questions
         int nbTours = 0;
-        while(!personnage.finDuJeu()){
+        while(!MethodsJauge.finDuJeu()){
             nbTours++;
             Question question = getQuestionAleatoire();
             reponseQuestion(question);
-            personnage.AfficheJauges();
+            MethodsJauge.AfficheJauges();
         }
 
         // fin du jeu

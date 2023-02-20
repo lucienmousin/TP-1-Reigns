@@ -10,27 +10,27 @@ public class Personnage {
     /**
      * Le nom du personnage
      */
-    protected String nom;
+    public static String nom;
     /**
      * Le genre du personnage
      */
-    protected Genre genre;
+    public static Genre genre;
     /**
      * La jauge de Clergé
      */
-    protected Jauge jaugeClerge;
+    public static Jauge jaugeClerge;
     /**
      * La jauge de Peuple
      */
-    protected Jauge jaugePeuple;
+    public static Jauge jaugePeuple;
     /**
      * La jauge d'Armée
      */
-    protected Jauge jaugeArmee;
+    public static Jauge jaugeArmee;
     /**
      * La jauge de Finances
      */
-    protected Jauge jaugeFinance;
+    public static Jauge jaugeFinance;
 
     /**
      * Crée un nouveau personnage avec le nom et le genre spécifiés,
@@ -50,58 +50,8 @@ public class Personnage {
         jaugeFinance = new Jauge("Finances", 15 + (int)(Math.random() * (35 - 15)));
     }
 
-    /**
-     * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
-     */
-    public void AfficheJauges() {
-        afficheJauge(jaugeClerge);
-        afficheJauge(jaugePeuple);
-        afficheJauge(jaugeArmee);
-        afficheJauge(jaugeFinance);
-        System.out.println();
-    }
+    /* Pour Afficher les nouvelles Jauges voir la class MethodsJauge*/
 
-    /**
-     * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
-     *
-     * @return true si le jeu est fini, false sinon
-     */
-    public boolean finDuJeu(){
-        if(jaugeClerge.getValeur()<=0
-                || jaugeClerge.getValeur()>=50
-                || jaugePeuple.getValeur()<=0
-                || jaugePeuple.getValeur()>=50
-                || jaugeArmee.getValeur()<=0
-                || jaugeArmee.getValeur()>=50
-                || jaugeFinance.getValeur()<=0
-                || jaugeFinance.getValeur()>=50){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    /**
-     * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
-     * et des "_" pour représenter la valeur manquante.
-     *
-     * @param jauge La jauge à afficher
-     */
-    private void afficheJauge(Jauge jauge) {
-        String resultat = "[";
-        // valeur : ####
-        for(int i=0;i<jauge.getValeur();i++){
-            resultat += "#";
-        }
-        // on complète avec ____
-        for(int i=0;i<50-(jauge.getValeur()>0?jauge.getValeur():0);i++){
-            resultat += "_";
-        }
-        resultat += "] ";
-        // affichage du nom
-        resultat += jauge.getNom();
-        System.out.println(resultat);
-    }
 
     /**
      * Retourne le nom du personnage
@@ -131,6 +81,7 @@ public class Personnage {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
+
     /**
      * Retourne la jauge du clergé
      * @return la jauge du clergé
@@ -138,13 +89,12 @@ public class Personnage {
     public Jauge getJaugeClerge() {
         return jaugeClerge;
     }
-
     /**
      * Modifie la jauge du clergé
      * @param jaugeClerge La nouvelle jauge du clergé
      */
     public void setJaugeClerge(Jauge jaugeClerge) {
-        this.jaugeClerge = jaugeClerge;
+        Personnage.jaugeClerge = jaugeClerge;
     }
 
     /**
@@ -159,7 +109,7 @@ public class Personnage {
      * @param jaugePeuple La nouvelle jauge du peuple
      */
     public void setJaugePeuple(Jauge jaugePeuple) {
-        this.jaugePeuple = jaugePeuple;
+        Personnage.jaugePeuple = jaugePeuple;
     }
 
     /**
@@ -174,7 +124,7 @@ public class Personnage {
      * @param jaugeArmee La nouvelle jauge de l'armée
      */
     public void setJaugeArmee(Jauge jaugeArmee) {
-        this.jaugeArmee = jaugeArmee;
+        Personnage.jaugeArmee = jaugeArmee;
     }
 
     /**
@@ -189,7 +139,7 @@ public class Personnage {
      * @param jaugeFinance La nouvelle jauge des finances
      */
     public void setJaugeFinance(Jauge jaugeFinance) {
-        this.jaugeFinance = jaugeFinance;
+        Personnage.jaugeFinance = jaugeFinance;
     }
 
 }
