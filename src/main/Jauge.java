@@ -2,9 +2,7 @@ package main;
 
 public class Jauge {
     protected TypeJauge type;
-
     protected String nom;
-
     protected int valeur;
 
     public Jauge(String nom, int valeur){
@@ -26,7 +24,7 @@ public class Jauge {
 
     public void setValeur(int valeur) {
         if (valeur <= 0 || valeur >= 50){
-            Reigns.Fin = true;
+            Reigns.GameOver();
         }
         else {
             this.valeur = valeur;
@@ -42,18 +40,14 @@ public class Jauge {
     }
 
     public void afficheJauge() {
-        String resultat = "[";
+        StringBuilder resultat = new StringBuilder("[");
         // valeur : ####
-        for(int i=0;i<valeur;i++){
-            resultat += "#";
-        }
+        resultat.append("#".repeat(Math.max(0, valeur)));
         // on complète avec ____
-        for(int i=0;i<50-valeur;i++){
-            resultat += "_";
-        }
-        resultat += "] ";
+        resultat.append("_".repeat(Math.max(0, 50 - valeur)));
+        resultat.append("] ");
         // affichage du nom
-        resultat += nom;
+        resultat.append(nom);
         System.out.println(resultat);
     }
 }
