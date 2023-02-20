@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MethodsQuestion extends Reigns{
     /**
@@ -110,5 +111,31 @@ public class MethodsQuestion extends Reigns{
     public static Question getQuestionAleatoire(){
         int numQuestion = (int) (Math.random()*MethodsQuestion.questions.size());
         return MethodsQuestion.questions.get(numQuestion);
+    }
+
+
+
+    /**
+     * Cette fonction permet de gérer la réponse à une question donnée. Elle affiche la question, demande à
+     * l'utilisateur d'entrer une réponse (soit "G" soit "D") et en fonction de la réponse, elle appelle la méthode
+     * appropriée pour appliquer les conséquences sur les jauges du personnage.
+     * @param question La question à laquelle il faut répondre
+     */
+    public static void reponseQuestion(Question question){
+        question.afficheQuestion();
+        // récupère la réponse
+        Scanner scanner = new Scanner(System.in);
+        String reponse = "";
+        while(!reponse.equals("G") && !reponse.equals("D")){
+            System.out.println("Entrez la réponse (G ou D)");
+            System.out.flush();
+            reponse = scanner.nextLine();
+        }
+        // applique les malus
+        if(reponse.equals("G")){
+            question.appliqueEffetsGauche(Reigns.personnage);
+        }else{
+            question.appliqueEffetsDroite(Reigns.personnage);
+        }
     }
 }
