@@ -1,6 +1,6 @@
 # Reigns
 
-Dans ce dépôt, vous trouverez une (mauvaise) implémentation du jeu REIGNS. 
+Thomas et Eliott. Dans ce dépôt, vous trouverez une (mauvaise) implémentation du jeu REIGNS. 
 
 ## Qu'est-ce que Reigns ?
 
